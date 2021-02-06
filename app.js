@@ -25,7 +25,7 @@ app.get('/', (req, res) => {
 // all customers
 app.get('/customers', (req, res) => {
   const sql = 'SELECT * FROM customers';
-
+  // prueba
   connection.query(sql, (error, results) => {
     if (error) throw error;
     if (results.length > 0) {
