@@ -18,6 +18,8 @@ const dentista_pacientes = require('./app/cd.dentista/pacientes/loadPacientes');
 const dentista_uploads = require('./app/cd.dentista/pacientes/uploadimages');
 const dentista_customercrud = require('./app/cd.dentista/pacientes/crudPacientes');
 
+const dentista_sender = require( './app/cd.dentista/emails/sender' );
+
 app.use('/dentista', services);
 app.use('/dentista', subServices);
 app.use('/dentista', dentista);
@@ -29,6 +31,7 @@ app.use('/dentista/agenda', dentista_agenda);
 app.use('/dentista/pacientes', dentista_pacientes);
 app.use('/dentista/uploads', dentista_uploads);
 app.use('/dentista/customers', dentista_customercrud);
+app.use('/dentista/send', dentista_sender);
 
 
 
