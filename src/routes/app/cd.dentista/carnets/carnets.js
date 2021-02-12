@@ -1,9 +1,9 @@
 const express = require('express');
-const getConnection = require('../../../config/database');
+const getConnection = require('../../../../config/database');
 
 const router = express.Router();
 
-router.post('/carnetdetails', (request, response) => {
+router.post('/carnets/load', (request, response) => {
     connection = getConnection();
     connection.connect(error => {
         if (error) {
@@ -12,10 +12,10 @@ router.post('/carnetdetails', (request, response) => {
         }
     });
     const {
-        id_clinica, id_paciente, id_subservicio, id_servicioclientes
+        idclinica
     } = request.body;
-    const sql = ` CALL SP_CARNETDETAILS(?, ?, ?, ?) `;
-    const values = [id_clinica, id_paciente, id_subservicio, id_servicioclientes];
+    const sql = ` CALL SP_VER_CARNETS(?) `;
+    const values = [idclinica];
     connection.query(sql, values, (error, result) => {
         if (error) response.status(200).json({ error: true, status: 500, message: error.message });
         if (result.length > 0) {
