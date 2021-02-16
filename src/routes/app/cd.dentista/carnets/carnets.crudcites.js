@@ -93,11 +93,11 @@ router.post('/updatecite', (request, response) => {
     const {
         id_cita, Fecha_cita, Hora_cita, Asistencia_cita, Evaluaciones, id_paciente
     } = request.body;
-    const sql = ` CALL SP_CARNETS_UPDATEPCITE(?, ?, ?, ?, ?, ?, @p5); `;
+    const sql = ` CALL SP_CARNETS_UPDATECITE(?, ?, ?, ?, ?, ?, @p5); `;
     const values = [id_cita, Fecha_cita, Hora_cita, Asistencia_cita, Evaluaciones, id_paciente];
     connection.query(sql, values, (error, result) => {
-        console.log(result);
         if (error) response.status(200).json({ error: true, status: 500, message: error.message });
+
         if (result.length > 0) {
             response.status(200).json({ error: false, status: 200, message: result[0] });
         } else {
