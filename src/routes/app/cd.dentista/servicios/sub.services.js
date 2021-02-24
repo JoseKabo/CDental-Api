@@ -112,12 +112,13 @@ router.post('/add-sub-service', (request, response) => {
         }
     });
     const sql = `INSERT INTO SubServicios 
-                    (SubServicio, precio, id_servicios) 
+                    (SubServicio, descripcion, precio, id_servicios) 
                 values 
-                    (?, ?, ?)`;
-    const { SubServicio, precio, id_servicios } = request.body;
+                    (?, ?, ?, ?)`;
+    const { SubServicio, descripcion, precio, id_servicios } = request.body;
     values = [
         SubServicio,
+        descripcion,
         precio,
         id_servicios
     ];
